@@ -1,0 +1,52 @@
+<table class="mat-elevation-z8" mat-table [dataSource]="dataSource" class="track-wrapper">
+    <ng-container matColumnDef="play-btn">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let track" class="play-btn">
+            <mat-icon class="icon-active" (click)="setSong(track)">play_arrow</mat-icon>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="track">
+        <th mat-header-cell *matHeaderCellDef>Track</th>
+        <td mat-cell *matCellDef="let track"> {{ track.name }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="artist">
+        <th mat-header-cell *matHeaderCellDef> Artist </th>
+        <td mat-cell *matCellDef="let track">
+            <ul class="track-artists">
+                <li *ngFor="let artist of track.artists; last as isLast" class="artist">
+                    {{ artist.name }}<span *ngIf="!isLast">,</span>
+                </li>
+            </ul>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="track-duration">
+        <th mat-header-cell *matHeaderCellDef> Track duration </th>
+        <td mat-cell *matCellDef="let track">
+            {{ track.duration_ms | date: 'mm:ss' }}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="menu">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let track">
+            <button mat-icon-button [matMenuTriggerFor]="menu" class="playlist-menu icon-active" *ngIf="auth">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item  [matMenuTriggerFor]="playlist">
+                  <span>add to playlist</span>
+                </button>
+            </mat-menu>
+
+            <mat-menu #playlist="matMenu">
+                <button mat-menu-item  *ngFor="let playlist of playlistList" (click)="addSongToPlaylist(playlist.id, track.uri)">{{ playlist.name }}</button>
+            </mat-menu>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

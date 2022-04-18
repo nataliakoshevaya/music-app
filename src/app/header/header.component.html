@@ -1,0 +1,43 @@
+<header class="header">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-button [routerLink]="'/'">
+        <span>Music app</span>
+      </button>
+
+      <nav class="nav">
+        <ng-container *ngIf="isAuth$ | async; else loginBtn">
+          <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon aria-hidden="false" aria-label="login"
+              >account_circle</mat-icon
+            >
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item [routerLink]="'/profile'">Profile</button>
+            <button mat-menu-item [routerLink]="'/playlists'">Playlists</button>
+            <button mat-menu-item (click)="logout()">
+              Log out
+            </button>
+          </mat-menu>
+        </ng-container>
+
+        <ng-template #loginBtn>
+          <button mat-button [routerLink]="'/auth'">
+            <mat-icon aria-hidden="false" aria-label="login">login</mat-icon>
+          </button>
+        </ng-template>
+
+        <mat-form-field>
+          <mat-select
+            [(value)]="selectedLang"
+            (selectionChange)="switchLanguage($event.value)"
+          >
+            <mat-option *ngFor="let lang of langList" [value]="lang.value">{{
+              lang.value
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </nav>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</header>

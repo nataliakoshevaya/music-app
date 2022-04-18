@@ -1,0 +1,24 @@
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 50px;
+}
+
+tbody {
+  font-size: 20px;
+}
+
+td {
+    border-bottom: 1px solid #d4d4d4;
+    padding: 10px;
+}
+
+.profile-title {
+    color: #808080;
+}
+
+.unknown-avatar {
+  width: 80px;
+  height: 100px;
+}

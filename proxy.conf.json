@@ -1,0 +1,19 @@
+{
+  "/users": {
+    "target": "http://localhost:3000",
+    "secure": false,
+    "pathRewrite": {
+      "/users": ""
+    },
+    "logLevel": "debug"
+  },
+  "/spotify": {
+    "target": "https://api.spotify.com/v1",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "/spotify": ""
+    },
+    "logLevel": "info"
+  }
+}

@@ -1,0 +1,11 @@
+.create-playlist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    background-color: black;
+    &-icon {
+        color: #fff;
+    }
+}

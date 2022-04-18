@@ -1,0 +1,23 @@
+<div class="profile-wrapper" *ngIf="(userProfile$ | async) as userProfile">
+  <ng-container *ngIf="userProfile?.profilePicture; else noProfilePicture">
+    <img src="userProfile.profilePicture" alt="profile picture">
+  </ng-container>
+  <ng-template #noProfilePicture>
+    <img src="../../assets/img/PngItem_307416.png" alt="profile picture" class="unknown-avatar">
+  </ng-template>
+
+  <tbody>
+    <tr>
+      <td class="profile-title">Name</td>
+      <td>{{ userProfile?.firstName }} {{ userProfile?.secondName }}</td>
+    </tr>
+    <tr>
+      <td class="profile-title">Email</td>
+      <td>{{ userProfile?.email }}</td>
+    </tr>
+    <tr>
+      <td class="profile-title">Phone number</td>
+      <td>{{ userProfile?.phoneNumber }}</td>
+    </tr>
+  </tbody>
+</div>

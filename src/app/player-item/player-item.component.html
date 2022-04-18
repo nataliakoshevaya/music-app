@@ -1,0 +1,14 @@
+<li class="slide-item" #carouselItem *ngFor="let track of tracksList">
+    <ng-container *ngIf="track.album; else noAlbumExist">
+        <img src="{{ track.album.images[0].url }}" alt="{{ track.name }}" />
+    </ng-container>
+
+  <ng-template #noAlbumExist>
+        <img src="{{ track.images[0].url }}" alt="{{ track.name }}" />  
+  </ng-template>
+  
+  <a [routerLink]="[ '../album', track.type, track.id]" class="slide-title">
+    {{ track.name }}
+  </a>
+  <p>{{ track.artists[0].name }}</p>
+</li> 

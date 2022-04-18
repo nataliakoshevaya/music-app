@@ -1,0 +1,98 @@
+<div class="error-message" *ngIf="serverErrorMessage$ | async">
+  {{ serverErrorMessage$ | async}}
+</div>
+
+<form
+  class="form registration-form"
+  [formGroup]="registrationForm"
+  (ngSubmit)="onSubmit()"
+>
+  <mat-form-field appearance="fill">
+    <mat-label>{{ 'AUTH.ENTER_EMAIL' | translate }}</mat-label>
+    <input
+      matInput
+      formControlName="email"
+      placeholder="pat@example.com"
+      type="email"
+      name="email"
+      required
+    />
+    <mat-error>{{ 'ERROR_MESSAGES.EMAIL' | translate }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>{{ 'AUTH.ENTER_NAME' | translate }}</mat-label>
+    <input
+      matInput
+      formControlName="firstName"
+      placeholder="Введите имя"
+      type="text"
+      name="firstName"
+      required
+    />
+    <mat-error>{{ 'AUTH.ENTER_NAME' | translate }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>{{ 'AUTH.ENTER_SURNAME' | translate }}</mat-label>
+    <input
+      matInput
+      formControlName="secondName"
+      placeholder="Введите фамилию"
+      type="text"
+      name="secondName"
+      required
+    />
+    <mat-error>{{ 'AUTH.ENTER_SURNAME' | translate }}</mat-error>
+  </mat-form-field>
+
+  <div [formGroup]="passwordsGroup" class="passwords-container">
+    <mat-form-field appearance="fill">
+      <mat-label>{{ 'AUTH.ENTER_PASSWORD' | translate }}</mat-label>
+      <input
+        matInput
+        formControlName="password"
+        placeholder="Введите пароль"
+        type="password"
+        name="password"
+        required
+      />
+      <mat-error>{{ 'ERROR_MESSAGES.VALID_PASSWORD' | translate }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>{{ 'AUTH.CONFIRM_PASSWORD' | translate }}</mat-label>
+      <input
+        matInput
+        formControlName="confirmPassword"
+        placeholder="Подтвердить пароль"
+        type="password"
+        name="confirmPassword"
+        [errorStateMatcher]="confirmValidParentMatcher"
+        required
+      />
+      <mat-error>{{ 'ERROR_MESSAGES.CONFIRM_PASSWORD' | translate }}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="fill">
+    <mat-label>{{ 'AUTH.ENTER_NUMBER' | translate }}</mat-label>
+    <input
+      matInput
+      formControlName="phoneNumber"
+      placeholder="Введите номер"
+      type="text"
+      name="phoneNumber"
+      required
+    />
+    <mat-error>{{ 'AUTH.ENTER_NUMBER' | translate }}</mat-error>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    type="submit"
+    [disabled]="!this.registrationForm.valid"
+  >
+  {{ 'AUTH.SIGNUP' | translate }}
+  </button>
+</form>

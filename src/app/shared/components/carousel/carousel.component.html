@@ -1,0 +1,26 @@
+<button
+  class="control prev"
+  (click)="onPreviousClick()"
+  [disabled]="setDisabledButton('prev')"
+>
+  <mat-icon aria-hidden="false" aria-label="arrow left">chevron_left</mat-icon>
+</button>
+<div class="carousel-wrapper" #carousel>
+  <ng-container *ngIf="isLoading; else mainContent">
+    <mat-spinner class="spinner"></mat-spinner>
+  </ng-container>
+  <ng-template #mainContent>
+    <ul class="carousel" #carouselAnimation>
+      <app-player-item [tracksList]="tracksList" #carouselItem></app-player-item>
+    </ul>
+  </ng-template>
+</div>
+<button
+  class="control next"
+  (click)="onNextClick()"
+  [disabled]="setDisabledButton('next')"
+>
+  <mat-icon aria-hidden="false" aria-label="arrow right"
+    >chevron_right</mat-icon
+  >
+</button>

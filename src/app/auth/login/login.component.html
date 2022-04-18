@@ -1,0 +1,43 @@
+<div class="error-message" *ngIf="(serverErrorMessage$ | async) as serverErrorMessage">
+  {{ serverErrorMessage }}
+</div>
+
+<form
+  class="form login-form"
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmit()"
+>
+  <mat-form-field appearance="fill">
+    <mat-label>{{ 'AUTH.ENTER_EMAIL' | translate }}</mat-label>
+    <input
+      matInput
+      formControlName="email"
+      placeholder="pat@example.com"
+      type="email"
+      name="email"
+      required
+    />
+    <mat-error>{{ 'ERROR_MESSAGES.EMAIL' | translate }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>{{ 'AUTH.ENTER_PASSWORD' | translate }}</mat-label>
+    <input
+      matInput
+      formControlName="password"
+      placeholder="Введите имя"
+      type="password"
+      name="password"
+      required
+    />
+    <mat-error>{{ 'AUTH.ENTER_PASSWORD' | translate }}</mat-error>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    type="submit"
+    [disabled]="!this.loginForm.valid"
+  >
+  {{ 'AUTH.LOGIN' | translate }}
+  </button>
+</form>

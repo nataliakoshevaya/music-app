@@ -1,0 +1,36 @@
+table {
+    width: 100%;
+    text-align: left;
+}
+
+.mat-column-play-btn {
+    width: 30px;
+    padding-right: 24px;
+}
+
+.mat-column-track-duration {
+    width: 30px;
+}
+
+.mat-column-menu {
+    width: 30px;
+    padding-left: 30px;
+}
+
+.icon-active, .playlist-menu{
+     opacity: 0;
+}
+
+ tr {
+     cursor: pointer;
+ }
+ 
+ tr:hover .icon-active {
+   opacity: 1; 
+ }
+
+ .playlist-menu {
+     background-color: rgb(66, 66, 66);
+     color: #fff;
+ }
+ 

@@ -1,0 +1,23 @@
+<form class="form login-form" [formGroup]="createUserPlaylistForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Album name</mat-label>
+    <input matInput formControlName="name" placeholder="album name" type="text" name="name" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>description</mat-label>
+    <input matInput formControlName="description" placeholder="description" type="text" name="description" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Privacy</mat-label>
+    <mat-select formControlName="public">
+      <mat-option [value]="false">Public</mat-option>
+      <mat-option [value]="true">Private</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button type="submit" [disabled]="!this.createUserPlaylistForm.valid">
+    Create playlist
+  </button>
+</form>

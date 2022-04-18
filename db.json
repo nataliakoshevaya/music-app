@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "email": "kosheva@mail.com",
+      "password": "$2a$10$tWcPf/sH.hstGQe6GV03/OJyHL9ZdskxYls86h.8izXKyIF5XhG0O",
+      "id": 1
+    },
+    {
+      "email": "koshevaya.nata21@gmail.com",
+      "password": "$2a$10$Cen1WTaM14tCnTXMYSNRIeOcdWEMmo8YNc63PDAlD5n5HJCqucr82",
+      "firstName": "Natalia",
+      "secondName": "Koshevaya",
+      "phoneNumber": "0990586898",
+      "id": 2
+    }
+  ]
+}

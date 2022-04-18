@@ -1,0 +1,26 @@
+$slide-item-width: 200px;
+
+:host {
+    display: flex;
+}
+
+.slide-item {
+  width: 200px;
+  margin: 0 25px; 
+}
+
+.slide-title {
+  font-weight: 700;
+  display: block;
+  color: inherit;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+
+.slide-item img {
+  width: $slide-item-width;
+  height: 200px;
+  border-radius: 0.5em;
+}

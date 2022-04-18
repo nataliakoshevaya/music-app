@@ -1,0 +1,12 @@
+.mat-button-toggle-group {
+    margin-bottom: 10px;
+}
+
+::ng-deep.mat-form-field-label {
+    color: #000 !important;
+}
+      
+    
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-underline::before {
+    background-color: #000;
+}    

@@ -1,0 +1,16 @@
+<div *ngIf="serverErrorMessage">
+    {{ serverErrorMessage }}
+</div>
+
+<h2>You may like:</h2>
+
+<div class="container" *ngIf="tracksList.length > 0">
+    <app-carousel [tracksList]="tracksList" [isLoading]="isLoading"></app-carousel>
+</div> 
+
+<h2>New releases:</h2>
+
+<div class="container" *ngIf="tracksList.length > 0">
+    <app-carousel [tracksList]="newReleasesList" [isLoading]="isLoading"></app-carousel>
+</div> 
+

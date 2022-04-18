@@ -1,0 +1,37 @@
+<div *ngIf="albumItems" class="wrapper">
+  <div class="album-container">
+    <img src="{{ albumPicture }}" alt="{{ albumItems.name }}" />
+    <div class="album-content">
+      <p class="album-name">{{ albumItems.name }}</p>
+      <div class="album-inner">
+        <span class="artists-item" *ngFor="let artist of albumItems.artists">
+          {{ artist.name }}
+        </span>
+
+        <span *ngIf="albumItems.total_tracks">{{ albumItems.total_tracks }} tracks</span>
+        <span class="track-duration">{{ albumItems.duration_ms | date: 'mm:ss' }}</span>
+      </div>
+    </div>
+  </div>
+
+  <app-album-tracks [tracksList]="tracksList" (urlData)="setSong($event)"></app-album-tracks>
+</div>
+
+<mat-dialog-content *ngIf="playerItem">
+  <div class="album-container">
+    <img src="../../assets/img/No-album-art.png" alt="{{ playerItem.name }}" />
+    <div class="album-content">
+      <p class="album-name">{{ playerItem.name }}</p>
+      <p class="album-name">{{ playerItem.description }}</p>
+    </div>
+  </div>
+
+  <app-album-tracks [playlistTracks]="playlistTracks" (urlData)="setSong($event)"></app-album-tracks>
+
+  <button mat-button (click)="closeModal()">Close</button>
+</mat-dialog-content>
+
+<div class="audio-container" *ngIf="playerSrc">
+  <app-player #audio [name]="name" [artists]="artists" [albumPicture]="albumPicture" [playerSrc]="playerSrc">
+  </app-player>
+</div>

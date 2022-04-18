@@ -1,0 +1,19 @@
+{
+    "AUTH": {
+      "LOGIN": "Log in",
+      "SIGNUP": "Sign up",
+      "ENTER_EMAIL": "Enter email",
+      "ENTER_PASSWORD": "Enter password",
+      "CONFIRM_PASSWORD": "Confirm password",
+      "ENTER_NAME": "Enter name",
+      "ENTER_SURNAME": "Enter surname",
+      "ENTER_NUMBER": "Enter number"
+    },
+
+    "ERROR_MESSAGES": {
+        "EMAIL": "Enter valid email(pat@example.com)",
+        "VALID_PASSWORD": "The password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one symbol and a number.",
+        "CONFIRM_PASSWORD": "Passwords don't match"
+    }
+}
+  

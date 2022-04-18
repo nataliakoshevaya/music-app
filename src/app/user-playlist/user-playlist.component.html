@@ -1,0 +1,11 @@
+Playlists
+<div class="playlists-container">
+    <app-new-user-playlist (getUserPlaylist)="getUserPlaylist()"></app-new-user-playlist>
+    <div *ngFor="let playlist of userPlaylists">
+        <a mat-button routerLink="." [queryParams]="{dialog: true,type: playlist.type, id: playlist.id}">
+            <img src="../../../assets/img/No-album-art.png" alt="{{ playlist.name }}" />
+        </a>
+        <div>{{ playlist.name }}</div>
+        <div>{{ playlist.description }}</div>
+    </div>      
+</div>
