@@ -2,13 +2,13 @@
     {{ serverErrorMessage }}
 </div>
 
-<h2>You may like:</h2>
+<h2>{{ 'HOME_PAGE.YOU_MAY_LIKE'| translate }}:</h2>
 
 <div class="container" *ngIf="tracksList.length > 0">
     <app-carousel [tracksList]="tracksList" [isLoading]="isLoading"></app-carousel>
 </div> 
 
-<h2>New releases:</h2>
+<h2>{{ 'HOME_PAGE.NEW_RELEASES'| translate }}:</h2>
 
 <div class="container" *ngIf="tracksList.length > 0">
     <app-carousel [tracksList]="newReleasesList" [isLoading]="isLoading"></app-carousel>
