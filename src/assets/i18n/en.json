@@ -14,6 +14,11 @@
         "EMAIL": "Enter valid email(pat@example.com)",
         "VALID_PASSWORD": "The password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one symbol and a number.",
         "CONFIRM_PASSWORD": "Passwords don't match"
+    },
+
+    "HOME_PAGE": {
+      "YOU_MAY_LIKE": "You may like",
+      "NEW_RELEASES": "New releases"
     }
 }
   
