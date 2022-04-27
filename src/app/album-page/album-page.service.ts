@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment.dev';
 import {
   SongRequestBodyType,
   UserPlaylistItemType,
@@ -34,8 +33,9 @@ export class AlbumPageService {
     body: SongRequestBodyType,
     playlistId: string
   ): Observable<{ snapshot_id: string }> {
+    const spotifyToken = localStorage.getItem('userAccessToken');
     const headers = {
-      Authorization: `Bearer ${environment.ACCESS_SPOTIFY_USER_TOKEN}`,
+      Authorization: `Bearer ${spotifyToken}`,
     };
 
     return this.http.post<{ snapshot_id: string }>(
