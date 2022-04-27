@@ -8,14 +8,17 @@ import {
   Output,
 } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { select, Store } from '@ngrx/store';
 import { ToastrService } from 'ngx-toastr';
-import { ReplaySubject } from 'rxjs';
-import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { map, Observable, ReplaySubject } from 'rxjs';
 import {
   PlaylistItemType,
   TracksItemType,
   UserPlaylistItemType,
+  UserPlaylistsType,
 } from 'src/app/shared/types/player.type';
+import { selectIsAuth } from 'src/app/store/selectors/user.selector';
+import { IAppState } from 'src/app/store/state/app.state';
 import { UserPlaylistService } from 'src/app/user-playlist/user-playlist.service';
 import { AlbumPageService } from '../album-page.service';
 
@@ -31,17 +34,17 @@ export class AlbumTracksComponent implements OnInit, OnDestroy {
 
   private destroyed: ReplaySubject<boolean> = new ReplaySubject(1);
 
-  playlistList!: UserPlaylistItemType[];
+  playlistList$!: Observable<UserPlaylistItemType[]>;
 
   successMessage: string = '';
 
-  auth: boolean = false;
+  isAuth$!: Observable<boolean>;
 
   constructor(
     private profileService: UserPlaylistService,
     private albumPageService: AlbumPageService,
     private toastr: ToastrService,
-    private authenticationService: AuthenticationService
+    private store: Store<IAppState>
   ) {}
 
   displayedColumns: string[] = [
@@ -61,11 +64,9 @@ export class AlbumTracksComponent implements OnInit, OnDestroy {
       ? this.tracksList
       : this.playlistTracks.map((playlist: PlaylistItemType) => playlist.track);
 
-    this.authenticationService
-      .getAuthUser()
-      .subscribe((auth) => (this.auth = auth));
+    this.isAuth$ = this.store.pipe(select(selectIsAuth));
 
-    if (this.auth) this.getPlaylists();
+    this.getPlaylists();
   }
 
   addSongToPlaylist(playlistId: string, songId: string): void {
@@ -84,9 +85,9 @@ export class AlbumTracksComponent implements OnInit, OnDestroy {
   }
 
   getPlaylists(): void {
-    this.profileService.getUsersPlaylists().subscribe((playlists) => {
-      this.playlistList = playlists.items;
-    });
+    this.playlistList$ = this.profileService
+      .getUsersPlaylists()
+      .pipe(map((playlists: UserPlaylistsType) => playlists.items));
   }
 
   setSong({ preview_url, name }: TracksItemType): void {
